@@ -57,7 +57,7 @@ co2e_year = matched[0]
 
 local_filename = 'co2e_value.pdf'
 f_handler = open(local_filename, 'wb')
-for chunk  in response.iter_content():
+for chunk in response.iter_content():
     if chunk:
         f_handler.write(chunk)
 f_handler.close()
