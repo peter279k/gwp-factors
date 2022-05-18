@@ -29,3 +29,8 @@ python3 ./electric/moeaboe_handler.py
 
 - Once running above command, it will update the `./datasets/electric_co2e.csv` file.
 - If there's no latest electric CO2e value, it will not update the above CSV file.
+
+# Known Datasets
+
+- 電力排碳係數(經濟部能源局提供)
+- 溫室氣體排放係數管理表(環保署提供) (目前有6.0.3與6.0.4版本)
