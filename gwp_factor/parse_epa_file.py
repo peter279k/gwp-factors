@@ -18,10 +18,10 @@ def parse_ods_file(ods_file_path):
 
     ods_data = get_data(ods_file_path)
     ods_sheet_keys = list(ods_data.keys())
-#    parse_co2_burn(ods_data, ods_sheet_keys[1], csv_dir)
-#    parse_ch4_n2o_burn(ods_data, ods_sheet_keys[2], csv_dir)
-#    parse_ch4_n2o_burn(ods_data, ods_sheet_keys[3], csv_dir)
-    parse_cfcs(ods_data, ods_sheet_keys[4], csv_dir)
+    parse_co2_burn(ods_data, ods_sheet_keys[1], csv_dir)
+    parse_ch4_n2o_burn(ods_data, ods_sheet_keys[2], csv_dir)
+    parse_ch4_n2o_burn(ods_data, ods_sheet_keys[3], csv_dir)
+    parse_cfcs_gwp(ods_data, ods_sheet_keys[4], csv_dir)
 
 
 def parse_co2_burn(ods_data, ods_burn_sheet_key, csv_dir):
@@ -82,7 +82,7 @@ def parse_ch4_n2o_burn(ods_data, ods_burn_sheet_key, csv_dir):
     return True
 
 
-def parse_cfcs(ods_data, ods_burn_sheet_key, csv_dir):
+def parse_cfcs_gwp(ods_data, ods_burn_sheet_key, csv_dir):
     ods_heads = ods_data[ods_burn_sheet_key][1]
     comment_index = ods_heads.index('備註')
     csv_head = ','.join(ods_heads[1:comment_index]) + '\n'
