@@ -39,6 +39,10 @@ def parse_ods_file(ods_file_path):
     parse_fugitive_emission(ods_data, ods_sheet_keys[6], csv_dir)
     print('Parsing the ' + ods_sheet_keys[6] + ' is done.')
 
+    print('Parsing the ' + ods_sheet_keys[9] + ' is started.')
+    parse_fcfs_factor_emission(ods_data, ods_sheet_keys[9], csv_dir)
+    print('Parsing the ' + ods_sheet_keys[9] + ' is done.')
+
 
 def parse_co2_burn(ods_data, ods_burn_sheet_key, csv_dir):
     csv_head = '排放形式,排放源類別,燃料別,建議排放係數數值,建議排放係數單位\n'
@@ -108,11 +112,22 @@ def parse_cfcs_gwp(ods_data, ods_burn_sheet_key, csv_dir):
     csv_rows = csv_head
     while index < len(ods_data[ods_burn_sheet_key]):
         row = ods_data[ods_burn_sheet_key][index]
-        if len(row) <= 2:
+        if len(row) != 6 or row[1] == '-':
+            index += 1
+            continue
+        row_index = 0
+        for value in row:
+            if value == '─':
+                row[row_index] = 0
+            row_index += 1
+
+        csv_row = ','.join(list(map(str, row[1:comment_index+1])))
+        print(csv_row)
+        if len(csv_row.split(',')) != 5:
             index += 1
             continue
 
-        csv_rows += ','.join(list(map(str, row[1:comment_index+1]))) + '\n'
+        csv_rows += csv_row + '\n'
         index += 1
 
     csv_handler = open(csv_file_path, 'w')
@@ -139,6 +154,22 @@ def parse_fugitive_emission(ods_data, ods_burn_sheet_key, csv_dir):
 
     return True
 
+def parse_fcfs_factor_emission(ods_data, ods_burn_sheet_key, csv_dir):
+    csv_head = '設備名稱(中文),IPCC名稱,排放因子(%),防治設備回收率(%)\n'
+    csv_file_path = csv_dir + '/' + ods_burn_sheet_key + '.csv'
+    index = 2
+    end_index = 9
+    csv_rows = csv_head
+    while index <= end_index:
+        mapped = list(map(str, ods_data[ods_burn_sheet_key][index]))
+        csv_rows += ','.join(mapped) + '\n'
+        index += 1
+
+    csv_handler = open(csv_file_path, 'w')
+    csv_handler.write(csv_rows)
+    csv_handler.close()
+
+    return True
 
 ods_files = glob.glob('./datasets/*.ods')
 keyword = '溫室氣體排放係數管理表'

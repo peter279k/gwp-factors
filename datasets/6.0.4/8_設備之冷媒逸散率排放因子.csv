@@ -1,0 +1,9 @@
+設備名稱(中文),IPCC名稱,排放因子(%),防治設備回收率(%)
+家用冷凍、冷藏裝備,Domestic Refrigeration,0.1≦x≦0.5,70
+獨立商用冷凍、冷藏裝備,Stand-alone Commercial Applications,1≦x≦15,70
+中、大型冷凍、冷藏裝備,Medium & Large Commercial Refrigeration,10≦x≦35,70
+交通用冷凍、冷藏裝備,Transport Refrigeration,15≦x≦50,70
+工業冷凍、冷藏裝備，包括食品加工及冷藏,Industrial Refrigeration including Food Processing and  Cold Storage,7≦x≦25,90
+冰水機,Chillers,2≦x≦15,95
+住宅及商業建築冷氣機,Residential and Commercial A/C, including Heat Pumps,1≦x≦10,80
+移動式空氣清靜機,Mobile A/C,10≦x≦20,50
