@@ -1,1 +1,3 @@
 *.pdf
+!cfp_factors.pdf
+cfp_auth.txt
