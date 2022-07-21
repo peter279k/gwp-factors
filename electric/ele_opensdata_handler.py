@@ -4,7 +4,7 @@ contents[-1] += '\n '
 contents = contents[1:]
 handler.close()
 
-csv_contents = '年度,國家電力排放係數\n'
+csv_contents = 'year,electric_co2e\n'
 
 for content in contents:
     gwp = content[0:-2].split(',')
