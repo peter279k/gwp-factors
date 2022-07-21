@@ -45,7 +45,8 @@ def parse_ods_file(ods_file_path):
 
 
 def parse_co2_burn(ods_data, ods_burn_sheet_key, csv_dir):
-    csv_head = '排放形式,排放源類別,燃料別,建議排放係數數值,建議排放係數單位\n'
+    # 排放形式,排放源類別,燃料別,建議排放係數數值,建議排放係數單位
+    csv_head = 'emission_form,emission_type,burn_type,recommended_factor,factor_unit\n'
     csv_file_path = csv_dir + '/' + ods_burn_sheet_key + '.csv'
     index = 6
     emit_type = ''
@@ -74,7 +75,8 @@ def parse_co2_burn(ods_data, ods_burn_sheet_key, csv_dir):
 
 
 def parse_ch4_n2o_burn(ods_data, ods_burn_sheet_key, csv_dir):
-    csv_head = '排放形式,排放源類別,燃料別,建議排放係數數值,建議排放係數單位\n'
+    # 排放形式,排放源類別,燃料別,建議排放係數數值,建議排放係數單位
+    csv_head = 'emission_form,emission_type,burn_type,recommended_factor,factor_unit\n'
     csv_file_path = csv_dir + '/' + ods_burn_sheet_key + '.csv'
     index = 6
     emit_type = ''
@@ -138,7 +140,8 @@ def parse_cfcs_gwp(ods_data, ods_burn_sheet_key, csv_dir):
 
 
 def parse_fugitive_emission(ods_data, ods_burn_sheet_key, csv_dir):
-    csv_head = '設備名稱,排放因子(％),防治設備回收率(％),防治設備使用率(％),冷媒排放係數,單位,來源\n'
+    # 設備名稱,排放因子(％),防治設備回收率(％),防治設備使用率(％),冷媒排放係數,單位,來源
+    csv_head = 'equipment_name,emission_percent,recycle_percent,usage_percent,emission_factor,unit,source\n'
     csv_file_path = csv_dir + '/' + ods_burn_sheet_key + '.csv'
     index = 237
     end_index = 244
@@ -155,7 +158,8 @@ def parse_fugitive_emission(ods_data, ods_burn_sheet_key, csv_dir):
     return True
 
 def parse_fcfs_factor_emission(ods_data, ods_burn_sheet_key, csv_dir):
-    csv_head = '設備名稱(中文),IPCC名稱,排放因子(%),防治設備回收率(%)\n'
+    # 設備名稱(中文),IPCC名稱,排放因子(%),防治設備回收率(%)
+    csv_head = 'equipment_name,ipcc_name,emission_percent,recycle_percent\n'
     csv_file_path = csv_dir + '/' + ods_burn_sheet_key + '.csv'
     index = 2
     end_index = 9
