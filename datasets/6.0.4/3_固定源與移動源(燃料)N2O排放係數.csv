@@ -1,4 +1,4 @@
-排放形式,排放源類別,燃料別,建議排放係數數值,建議排放係數單位
+emission_form,emission_type,burn_type,recommended_factor,factor_unit
 固定源,煤,自產煤,3.699037800000001e-05,KgN2O/Kg
 固定源,煤,原料煤,4.270536000000001e-05,KgN2O/Kg
 固定源,煤,燃料煤,3.818361600000001e-05,KgN2O/Kg

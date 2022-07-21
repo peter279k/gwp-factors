@@ -1,4 +1,4 @@
-設備名稱,排放因子(％),防治設備回收率(％),防治設備使用率(％),冷媒排放係數,單位,來源
+equipment_name,emission_percent,recycle_percent,usage_percent,emission_factor,unit,source
 家用冷凍、冷藏裝備,0.3,0,0,0.003,公斤/公斤,IPCC
 獨立商用冷凍、冷藏裝備,5.5,0,0,0.055,公斤/公斤,IPCC
 中、大型冷凍、冷藏裝備,20,0,0,0.2,公斤/公斤,IPCC

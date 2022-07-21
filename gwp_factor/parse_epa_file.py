@@ -123,8 +123,9 @@ def parse_cfcs_gwp(ods_data, ods_burn_sheet_key, csv_dir):
                 row[row_index] = 0
             row_index += 1
 
-        csv_row = ','.join(list(map(str, row[1:comment_index+1])))
-        print(csv_row)
+        row = row[1:comment_index+1]
+        row[0] = '"' + row[0] + '"'
+        csv_row = ','.join(list(map(str, row)))
         if len(csv_row.split(',')) != 5:
             index += 1
             continue
@@ -158,14 +159,19 @@ def parse_fugitive_emission(ods_data, ods_burn_sheet_key, csv_dir):
     return True
 
 def parse_fcfs_factor_emission(ods_data, ods_burn_sheet_key, csv_dir):
-    # 設備名稱(中文),IPCC名稱,排放因子(%),防治設備回收率(%)
-    csv_head = 'equipment_name,ipcc_name,emission_percent,recycle_percent\n'
+    # 設備名稱(中文),IPCC名稱,最小排放因子(%),最大排放因子(%),防治設備回收率(%)
+    csv_head = 'equipment_name,ipcc_name,emission_min_percent,emission_max_percent,recycle_percent\n'
     csv_file_path = csv_dir + '/' + ods_burn_sheet_key + '.csv'
     index = 2
     end_index = 9
     csv_rows = csv_head
     while index <= end_index:
         mapped = list(map(str, ods_data[ods_burn_sheet_key][index]))
+        mapped[1] = '"' + mapped[1] + '"'
+        factor_arr = mapped[2].split('≦')
+        min_factor = factor_arr[0]
+        max_factor = factor_arr[2]
+        mapped[2] = min_factor + ',' + max_factor
         csv_rows += ','.join(mapped) + '\n'
         index += 1
 
