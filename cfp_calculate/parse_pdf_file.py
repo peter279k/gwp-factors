@@ -15,7 +15,10 @@ with open(factor_pdf_file, 'rb') as f:
 
 
 keywords = ['揭露項目', '內容']
-csv_head = '中文名稱,碳足跡數值,碳足跡數值單位,數量,宣告單位,生命週期範疇(系統邊界),盤查起迄日'
+
+# 中文名稱,碳足跡數值,碳足跡數值單位,數量,宣告單位,生命週期範疇(系統邊界),盤查起迄日
+csv_head = 'ch_name,co2e_value,co2e_unit,amount,declared_unit,lifecycle_boundary,checked_date_range'
+
 head_arr = csv_head.split(',')
 csv_contents = csv_head + '\n'
 csv_file_path = './datasets/cfp_factors.csv'
