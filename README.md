@@ -38,9 +38,14 @@ python3 ./electric/moeaboe_handler.py
 
 # CFP Calculator (產品碳足跡網)
 
+- Creating the `cfp_auth.txt` in this repository root folder to store the CFP website user name and password.
 - Running the `python3 ./cfp_calculate/fetch_pdf_file.py` to download factor PDF file.
 - Once it's failed for three times, the Python program will be terminated.
 - The factor PDF file will be saved in `./datasets` directory. (Parsing PDF file is WIP.)
+
+# GWP Values Fetching (IPCC AR4, AR5, AR6)
+
+- Running the `python3 ./gwp_value/gwp_value.py` to download the CSV file.
 
 # Known Datasets
 
