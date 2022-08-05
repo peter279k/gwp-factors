@@ -4,7 +4,7 @@ This is the crawler about GWP factors.
 
 # Prerequisites
 
-- Prepare the Python3+ version.
+- Prepare the Python3.6.9+ version.
 - Install required Python modules
 
 ```Bash
