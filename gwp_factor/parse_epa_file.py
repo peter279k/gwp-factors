@@ -19,30 +19,32 @@ def parse_ods_file(ods_file_path):
     ods_data = get_data(ods_file_path)
     ods_sheet_keys = list(ods_data.keys())
     parsing_str = 'Parsing the '
+    is_started_str = ' is started.'
+    is_done_str = ' is done.'
 
-    print(parsing_str + ods_sheet_keys[1] + ' is started.')
+    print(parsing_str + ods_sheet_keys[1] + is_started_str)
     parse_co2_burn(ods_data, ods_sheet_keys[1], csv_dir)
-    print(parsing_str + ods_sheet_keys[1] + ' is done.')
+    print(parsing_str + ods_sheet_keys[1] + is_done_str)
 
-    print(parsing_str + ods_sheet_keys[2] + ' is started.')
+    print(parsing_str + ods_sheet_keys[2] + is_started_str)
     parse_ch4_n2o_burn(ods_data, ods_sheet_keys[2], csv_dir)
-    print(parsing_str + ods_sheet_keys[2] + ' is done.')
+    print(parsing_str + ods_sheet_keys[2] + is_done_str)
 
-    print(parsing_str + ods_sheet_keys[3] + ' is started.')
+    print(parsing_str + ods_sheet_keys[3] + is_started_str)
     parse_ch4_n2o_burn(ods_data, ods_sheet_keys[3], csv_dir)
-    print(parsing_str + ods_sheet_keys[3] + ' is done.')
+    print(parsing_str + ods_sheet_keys[3] + is_done_str)
 
-    print(parsing_str + ods_sheet_keys[4] + ' is started.')
+    print(parsing_str + ods_sheet_keys[4] + is_started_str)
     parse_cfcs_gwp(ods_data, ods_sheet_keys[4], csv_dir)
-    print(parsing_str + ods_sheet_keys[4] + ' is done.')
+    print(parsing_str + ods_sheet_keys[4] + is_done_str)
 
-    print(parsing_str + ods_sheet_keys[6] + ' is started.')
+    print(parsing_str + ods_sheet_keys[6] + is_started_str)
     parse_fugitive_emission(ods_data, ods_sheet_keys[6], csv_dir)
-    print(parsing_str + ods_sheet_keys[6] + ' is done.')
+    print(parsing_str + ods_sheet_keys[6] + is_done_str)
 
-    print(parsing_str + ods_sheet_keys[9] + ' is started.')
+    print(parsing_str + ods_sheet_keys[9] + is_started_str)
     parse_fcfs_factor_emission(ods_data, ods_sheet_keys[9], csv_dir)
-    print(parsing_str + ods_sheet_keys[9] + ' is done.')
+    print(parsing_str + ods_sheet_keys[9] + is_done_str)
 
 
 def parse_co2_burn(ods_data, ods_burn_sheet_key, csv_dir):
@@ -182,10 +184,13 @@ def parse_fcfs_factor_emission(ods_data, ods_burn_sheet_key, csv_dir):
 
     return True
 
+is_started_str = ' is started.'
+is_done_str = ' is done.'
+
 ods_files = glob.glob('./datasets/*.ods')
 keyword = '溫室氣體排放係數管理表'
 for ods_file in ods_files:
     if keyword in ods_file:
-        print('Parsing ' + ods_file + ' is started.')
+        print('Parsing ' + ods_file + is_started_str)
         parse_ods_file(ods_file)
-        print('Parsing ' + ods_file + ' is done.')
+        print('Parsing ' + ods_file + is_done_str)
