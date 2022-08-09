@@ -18,30 +18,31 @@ def parse_ods_file(ods_file_path):
 
     ods_data = get_data(ods_file_path)
     ods_sheet_keys = list(ods_data.keys())
+    parsing_str = 'Parsing the '
 
-    print('Parsing the ' + ods_sheet_keys[1] + ' is started.')
+    print(parsing_str + ods_sheet_keys[1] + ' is started.')
     parse_co2_burn(ods_data, ods_sheet_keys[1], csv_dir)
-    print('Parsing the ' + ods_sheet_keys[1] + ' is done.')
+    print(parsing_str + ods_sheet_keys[1] + ' is done.')
 
-    print('Parsing the ' + ods_sheet_keys[2] + ' is started.')
+    print(parsing_str + ods_sheet_keys[2] + ' is started.')
     parse_ch4_n2o_burn(ods_data, ods_sheet_keys[2], csv_dir)
-    print('Parsing the ' + ods_sheet_keys[2] + ' is done.')
+    print(parsing_str + ods_sheet_keys[2] + ' is done.')
 
-    print('Parsing the ' + ods_sheet_keys[3] + ' is started.')
+    print(parsing_str + ods_sheet_keys[3] + ' is started.')
     parse_ch4_n2o_burn(ods_data, ods_sheet_keys[3], csv_dir)
-    print('Parsing the ' + ods_sheet_keys[3] + ' is done.')
+    print(parsing_str + ods_sheet_keys[3] + ' is done.')
 
-    print('Parsing the ' + ods_sheet_keys[4] + ' is started.')
+    print(parsing_str + ods_sheet_keys[4] + ' is started.')
     parse_cfcs_gwp(ods_data, ods_sheet_keys[4], csv_dir)
-    print('Parsing the ' + ods_sheet_keys[4] + ' is done.')
+    print(parsing_str + ods_sheet_keys[4] + ' is done.')
 
-    print('Parsing the ' + ods_sheet_keys[6] + ' is started.')
+    print(parsing_str + ods_sheet_keys[6] + ' is started.')
     parse_fugitive_emission(ods_data, ods_sheet_keys[6], csv_dir)
-    print('Parsing the ' + ods_sheet_keys[6] + ' is done.')
+    print(parsing_str + ods_sheet_keys[6] + ' is done.')
 
-    print('Parsing the ' + ods_sheet_keys[9] + ' is started.')
+    print(parsing_str + ods_sheet_keys[9] + ' is started.')
     parse_fcfs_factor_emission(ods_data, ods_sheet_keys[9], csv_dir)
-    print('Parsing the ' + ods_sheet_keys[9] + ' is done.')
+    print(parsing_str + ods_sheet_keys[9] + ' is done.')
 
 
 def parse_co2_burn(ods_data, ods_burn_sheet_key, csv_dir):
