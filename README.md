@@ -21,6 +21,8 @@ pip3 install -U pdftotext requests beautifulsoup4 pyexcel-ods3 pytesseract
 git clone https://gitlab.com/iii-api-platform/gwp-factors
 ```
 
+# 電力碳排係數(能源局)
+
 - Running the following command to fetch and collect latest electric CO2e value.
 
 ```Bash
@@ -43,7 +45,8 @@ python3 ./electric/moeaboe_handler.py
 - Once it's failed for three times, the Python program will be terminated.
 - The factor PDF file will be saved in `./datasets` directory. (Parsing PDF file is WIP.)
 
-# GWP Values Fetching (IPCC AR4, AR5, AR6)
+# GWP Values Fetching (IPCC AR4, AR5, AR6) 溫室氣體潛勢值
+
 
 - Running the `python3 ./gwp_value/gwp_value.py` to download the CSV file.
 
