@@ -13,7 +13,6 @@ if os.path.isfile(factor_pdf_file) is False:
 with open(factor_pdf_file, 'rb') as f:
     pdf_contents = pdftotext.PDF(f)
 
-
 keywords = ['揭露項目', '內容']
 
 csv_tw_head = '中文名稱,英文名稱,碳足跡數值,碳足跡數值單位,數量,宣告單位,生命週期範疇(系統邊界),生產區域名稱,盤查起迄日,公告年份'
@@ -22,6 +21,9 @@ csv_head = 'ch_name,en_name,co2e_value,co2e_unit,amount,declared_unit,lifecycle_
 head_arr = csv_tw_head.split(',')
 csv_contents = csv_head + '\n'
 csv_file_path = './datasets/cfp_factors.csv'
+
+if os.path.isfile(csv_file_path) is True:
+    os.remove(csv_file_path)
 
 pdf_contents_index = 0
 while pdf_contents_index < len(pdf_contents):

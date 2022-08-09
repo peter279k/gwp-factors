@@ -45,6 +45,20 @@ python3 ./electric/moeaboe_handler.py
 - Once it's failed for three times, the Python program will be terminated.
 - The factor PDF file will be saved in `./datasets` directory. (Parsing PDF file is WIP.)
 
+- The `pdftotext` is not worked under the Cronjob in the host operating system.
+    - To resolve above issue, using the `./cfp_calculate/Dockerfile` to build the Docker image.
+    - Then run the Docker image as the container to run the `parse_pdf_file.py` Python program.
+    - The building steps are as follows:
+
+```bash
+# Building the Docker image
+cd ./cfp_calculate
+docker build -t cfp_calculate . --no-cache
+
+# Setup the Cronjob
+*/10 * * * * docker rm cfp_calculate; cd /home/localadmin/gwp-factors; docker run --volume $PWD:/root/gwp-factors --name cfp_calculate cfp_calculate sh -c "cd /root/gwp-factors/ && python3 ./cfp_calculate/parse_pdf_file.py"
+```
+
 # GWP Values Fetching (IPCC AR4, AR5, AR6) 溫室氣體潛勢值
 
 
