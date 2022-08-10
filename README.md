@@ -55,8 +55,14 @@ python3 ./electric/moeaboe_handler.py
 cd ./cfp_calculate
 docker build -t cfp_calculate . --no-cache
 
+# Run the Docker image as the container
+docker stop cfp_calculate
+docker rm cfp_calculate
+docker run -itd --volume $PWD:/root/gwp-factors --name cfp_calculate cfp_calculate sh
+
+
 # Setup the Cronjob
-*/10 * * * * docker rm cfp_calculate; cd /home/localadmin/gwp-factors; docker run --volume $PWD:/root/gwp-factors --name cfp_calculate cfp_calculate sh -c "cd /root/gwp-factors/ && python3 ./cfp_calculate/parse_pdf_file.py"
+*/10 * * * * cd /home/localadmin/gwp-factors; docker exec cfp_calculate sh -c "cd /root/gwp-factors/ && python3 ./cfp_calculate/parse_pdf_file.py"
 ```
 
 # GWP Values Fetching (IPCC AR4, AR5, AR6) 溫室氣體潛勢值
