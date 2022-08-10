@@ -4,25 +4,6 @@ import codecs
 import requests
 
 
-def remove_utf8_bom(path):
-    buffer_size = 4096
-    bom_length = len(codecs.BOM_UTF8)
- 
-    with open(path, "r+b") as fp:
-        chunk = fp.read(buffer_size)
-        if chunk.startswith(codecs.BOM_UTF8):
-            i = 0
-            chunk = chunk[bom_length:]
-            while chunk:
-                fp.seek(i)
-                fp.write(chunk)
-                i += len(chunk)
-                fp.seek(bom_length, os.SEEK_CUR)
-                chunk = fp.read(buffer_size)
-            fp.seek(-bom_length, os.SEEK_CUR)
-            fp.truncate()
-
-
 url = 'https://github.com/openclimatedata/globalwarmingpotentials/raw/main/globalwarmingpotentials.csv'
 response = requests.get(url)
 
@@ -44,5 +25,4 @@ with open(csv_path, 'w') as file_handler:
     file_handler.write(csv_contents)
 
 
-remove_utf8_bom(csv_path)
 print('The globalwarmingpotentials.csv file has been saved in datasets folder.')
