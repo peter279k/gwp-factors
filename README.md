@@ -36,6 +36,7 @@ python3 ./electric/moeaboe_handler.py
 
 - Running the `python3 ./gwp_factor/download_epa_file.py` to download EPA files.
 - Running the `python3 ./gwp_factor/parse_epa_file.py` to parse EPA GWP factor files.
+- Running the `python3 ./gwp_factor/fill_zero_cfc_gwp.py` to fill the zero in specific factor files.
 - All parsed CSV files will be saved in `./datasets` directory.
 
 # CFP Calculator (產品碳足跡網)
