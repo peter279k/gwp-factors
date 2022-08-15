@@ -18,11 +18,24 @@ while response.status_code != 200:
     counter += 1
 
 csv_contents = response.text
-csv_contents = '\n'.join(csv_contents.split('\n')[9:])
+csv_contents_arr = csv_contents.split('\n')[9:-1]
+
+index = 0
+for csv_content in csv_contents_arr:
+    csv_content_index = 0
+    csv_content_arr = csv_content.split(',')
+    for value in csv_content_arr:
+        if value == '':
+            csv_content_arr[csv_content_index] = '0'
+        csv_content_index += 1
+    csv_contents_arr[index] = ','.join(csv_content_arr)
+    index += 1
+
+csv_contents = '\n'.join(csv_contents_arr) + '\n'
+
 
 csv_path = './datasets/globalwarmingpotentials.csv'
 with open(csv_path, 'w') as file_handler:
     file_handler.write(csv_contents)
-
 
 print('The globalwarmingpotentials.csv file has been saved in datasets folder.')
