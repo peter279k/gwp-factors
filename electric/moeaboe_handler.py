@@ -29,6 +29,7 @@ co2e_link = ''
 for message_link in message_links:
     if keyword in message_link.string:
         co2e_link = message_link['href']
+        break
 
 if co2e_link == '':
     print('The co2e_link is not found.')
