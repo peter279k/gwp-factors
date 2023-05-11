@@ -56,7 +56,7 @@ python3 ./electric/moeaboe_handler.py
 cd ./cfp_calculate
 docker build -t cfp_calculate . --no-cache
 
-# Run the Docker image as the container
+# Run the Docker image as the container (Ensuring current working directory is the gwp-factors project root)
 docker stop cfp_calculate
 docker rm cfp_calculate
 docker run -itd --volume $PWD:/root/gwp-factors --name cfp_calculate cfp_calculate sh
