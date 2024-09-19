@@ -9,9 +9,13 @@ def parse_ods_file(ods_file_path):
     dataset_path = './datasets/'
     regex = re.compile('\d+.\d+.\d+')
     matched = regex.findall(ods_file_path)
+    special_keyword = '(修)'
     if len(matched) != 1:
         return False
     version = matched[0]
+    if special_keyword in ods_file_path:
+        version = version + special_keyword
+
     if os.path.isdir(dataset_path + version) is False:
         os.mkdir(dataset_path + version)
     csv_dir = dataset_path + version

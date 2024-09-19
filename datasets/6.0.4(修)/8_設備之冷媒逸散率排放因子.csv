@@ -1,0 +1,9 @@
+equipment_name,ipcc_name,emission_min_percent,emission_max_percent,recycle_percent
+家用冷凍、冷藏裝備,"Domestic Refrigeration",0.1,0.5,70
+獨立商用冷凍、冷藏裝備,"Stand-alone Commercial Applications",1,15,70
+中、大型冷凍、冷藏裝備,"Medium & Large Commercial Refrigeration",10,35,70
+交通用冷凍、冷藏裝備,"Transport Refrigeration",15,50,70
+工業冷凍、冷藏裝備，包括食品加工及冷藏,"Industrial Refrigeration including Food Processing and  Cold Storage",7,25,90
+冰水機,"Chillers",2,15,95
+住宅及商業建築冷氣機,"Residential and Commercial A/C, including Heat Pumps",1,10,80
+移動式空氣清靜機,"Mobile A/C",10,20,50
