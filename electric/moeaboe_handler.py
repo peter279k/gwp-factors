@@ -7,8 +7,12 @@ from bs4 import BeautifulSoup
 
 
 keyword = '年度電力排碳係數'
-url = 'https://www.moeaboe.gov.tw/ECW/populace/news/Board.aspx?kind=3&menu_id=57'
-response = requests.get(url)
+url = 'https://www.moeaea.gov.tw/ECW/populace/news/Board.aspx?kind=3&menu_id=57'
+headers = {
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+}
+response = requests.get(url, headers=headers)
 
 if response.ok is False:
     print('Request the %s is failed!' % url)
@@ -20,7 +24,7 @@ if keyword not in response.text:
     sys.exit()
 
 
-prefix_url = 'https://www.moeaboe.gov.tw/ECW/'
+prefix_url = 'https://www.moeaea.gov.tw/ECW/'
 
 soup = BeautifulSoup(response.text, 'html.parser')
 message_links = soup.select('ul.NewsMain > li > a')
@@ -40,7 +44,7 @@ print('The %s PDF file link is found.' % co2e_link)
 
 pdf_file_id = 'ctl00_holderContent_wUctlNewsDetail_repFiles_ctl01_repFileTypes_ctl00_lnkFiles'
 
-response = requests.get(co2e_link)
+response = requests.get(co2e_link, headers=headers)
 
 if response.ok is False:
     print('Request the %s is failed!' % url)
@@ -50,7 +54,7 @@ if response.ok is False:
 soup = BeautifulSoup(response.text, 'html.parser')
 pdf_file_link = soup.select_one('a#' + pdf_file_id)['href']
 
-response = requests.get(pdf_file_link)
+response = requests.get(pdf_file_link, headers=headers)
 content_dis = response.headers['Content-Disposition']
 regex = re.compile('\d+')
 matched = regex.findall(content_dis)
