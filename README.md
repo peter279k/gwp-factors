@@ -32,7 +32,7 @@ python3 ./electric/moeaea_handler.py
 - Once running above command, it will update the `./datasets/electric_co2e.csv` file.
 - If there's no latest electric CO2e value, it will not update the above CSV file.
 
-# GWP Factor Fetcher (環保署)
+# GWP Factor Fetcher (環境部)
 
 - Running the `python3 ./gwp_factor/download_epa_file.py` to download EPA files.
 - Running the `python3 ./gwp_factor/parse_epa_file.py` to parse EPA GWP factor files.
@@ -74,7 +74,7 @@ docker run -itd --volume $PWD:/root/gwp-factors --name cfp_calculate cfp_calcula
 
 # Known Datasets
 
-- 電力排碳係數(經濟部能源局提供)
-- 溫室氣體排放係數管理表(環保署提供) (目前有6.0.3與6.0.4版本)
+- 電力排碳係數(經濟部能源署提供)
+- 溫室氣體排放係數管理表(環境部提供) (目前有6.0.3、6.0.4版本與6.0.4(修))
 - 產品碳足跡資訊網 (WIP for parsing factor PDF file)
-  - https://cfp-calculate.tw/cfpc/WebPage/LoginPage.aspx
+  - https://cfp-calculate.tw
