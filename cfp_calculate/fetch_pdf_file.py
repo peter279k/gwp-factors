@@ -39,21 +39,21 @@ def recognize_captcha(captcha_img_path):
 
 def cfp_login(user_name, user_password):
     request = requests.Session()
-    cfp_cal_url = 'https://cfp-calculate.tw/cfpc/WebPage/LoginPage.aspx'
+    cfp_cal_url = 'https://cfp-calculate.tw/cfpc/WebPage/Login.aspx'
     cfp_captcha_url = 'https://cfp-calculate.tw/cfpc/'
 
     login_response = request.get(cfp_cal_url)
     soup = BeautifulSoup(login_response.text, 'html.parser')
     post_data = {
+        '__EVENTTARGET': 'adminPartner',
+        '__EVENTARGUMENT': '',
         '__VIEWSTATE': '',
-        '__VIEWSTATEENCRYPTED': '',
         '__VIEWSTATEGENERATOR': 'C8B91BE1',
         '__EVENTVALIDATION': '',
-        'ctl00$ContentPlaceHolder1$tbx_MemberAt': '',
-        'ctl00$ContentPlaceHolder1$tbx_MemberMima': '',
-        'ctl00$ContentPlaceHolder1$tbx_ValidateNumber': '',
-        'ctl00$ContentPlaceHolder1$btn_Login': '登入',
-        'ctl00$ContentPlaceHolder1$hf_cooperation_countset': '5',
+        'tbx_MemberAt': '',
+        'tbx_MemberMima': '',
+        'tbx_ValidateNumber': '',
+        'tbx_email': '',
     }
     view_state = soup.select_one('input#__VIEWSTATE')
     event_validation = soup.select_one('input#__EVENTVALIDATION')
@@ -70,9 +70,9 @@ def cfp_login(user_name, user_password):
 
     post_data['__VIEWSTATE'] = view_state.get('value')
     post_data['__EVENTVALIDATION'] = event_validation.get('value')
-    post_data['ctl00$ContentPlaceHolder1$tbx_MemberAt'] = user_name
-    post_data['ctl00$ContentPlaceHolder1$tbx_MemberMima'] = user_password
-    post_data['ctl00$ContentPlaceHolder1$tbx_ValidateNumber'] = captcha_number
+    post_data['tbx_MemberAt'] = user_name
+    post_data['tbx_MemberMima'] = user_password
+    post_data['tbx_ValidateNumber'] = captcha_number
 
     headers = {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -80,7 +80,7 @@ def cfp_login(user_name, user_password):
         'Cache-Control': 'max-age=0',
         'Connection': 'keep-alive',
         'Origin': 'https://cfp-calculate.tw',
-        'Referer': 'https://cfp-calculate.tw/cfpc/WebPage/LoginPage.aspx',
+        'Referer': 'https://cfp-calculate.tw/cfpc/WebPage/Login.aspx',
         'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
         'sec-ch-ua-mobile': '?0',
         'sec-ch-ua-platform': '"Windows"',
@@ -93,6 +93,7 @@ def cfp_login(user_name, user_password):
     }
 
     login_response = request.post(cfp_cal_url, data=post_data, headers=headers)
+    login_response = request.get('https://cfp-calculate.tw/cfpc/WebPage/Index.aspx')
 
     return [login_response.text, request, headers]
 
