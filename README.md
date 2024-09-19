@@ -9,7 +9,7 @@ This is the crawler about GWP factors.
 
 ```Bash
 sudo apt-get update
-sudo apt-get install build-essential libpoppler-cpp-dev pkg-config python3-dev python3-pil
+sudo apt-get install build-essential libpoppler-cpp-dev pkg-config python3-dev python3-pil tesseract-ocr
 pip3 install -U pdftotext requests beautifulsoup4 pyexcel-ods3 pytesseract
 ```
 
