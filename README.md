@@ -21,12 +21,12 @@ pip3 install -U pdftotext requests beautifulsoup4 pyexcel-ods3 pytesseract
 git clone https://gitlab.com/iii-api-platform/gwp-factors
 ```
 
-# 電力碳排係數(能源局)
+# 電力碳排係數(能源署)
 
 - Running the following command to fetch and collect latest electric CO2e value.
 
 ```Bash
-python3 ./electric/moeaboe_handler.py
+python3 ./electric/moeaea_handler.py
 ```
 
 - Once running above command, it will update the `./datasets/electric_co2e.csv` file.
