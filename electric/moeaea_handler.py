@@ -73,7 +73,10 @@ for co2e_link in co2e_links:
 
     pdf = pdftotext.PDF(open(local_filename, 'rb'))
     pdf_lines = pdf[0].split('\n')
-    co2e_value = pdf_lines[3].replace(' ', '').split('公斤')[0]
+    factor_pdf_line = pdf_lines[3]
+    if factor_pdf_line == '':
+        factor_pdf_line = pdf_lines[4]
+    co2e_value = factor_pdf_line.replace(' ', '').split('公斤')[0]
     csv_line = co2e_year + ',' + co2e_value + '\n'
 
     ele_csv_path = './datasets/electric_co2e.csv'
